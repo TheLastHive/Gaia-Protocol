@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Inicio
 Route::get('/', function () {
     return view('welcome');
+});
+
+// Inicio tras login
+Route::get('/home', function () {
+    return view('');
+})->middleware(['auth', 'verified']);
+
+// Rutas que acceden solo desde login
+Route::prefix('')->middleware('auth', 'verified')->group(function () {
+    
 });
