@@ -12,10 +12,10 @@
 
     {{-- Rutas css/js --}}
     @vite([
-        'resources/js/app.js', // JS PRINCIPAL
+        'resources/css/app.scss', // Bootstrap
         'resources/css/custom.scss', // CSS principal
         'resources/css/custom.css',
-        'resources/css/app.scss', // Bootstrap
+        'resources/js/app.js', // JS PRINCIPAL
     ])
 
     {{-- Iconos FONTAWESOME --}}

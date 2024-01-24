@@ -20,10 +20,10 @@ Route::get('/', function () {
 
 // Inicio tras login
 Route::get('/home', function () {
-    return view('');
+    return view('auth.dashboard');
 })->middleware(['auth', 'verified']);
 
 // Rutas que acceden solo desde login
 Route::prefix('')->middleware('auth', 'verified')->group(function () {
-    
+
 });
