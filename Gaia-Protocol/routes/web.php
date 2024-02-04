@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TokenController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Inicio
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,3 +25,15 @@ Route::get('/removeLiquidityError', 'PoolController@removeLiquidityError')->name
 Route::get('/removeLiquiditySuccess', 'PoolController@removeLiquiditySuccess')->name('removeLiquiditySuccess');
 Route::get('/createPoolSuccess', 'PoolController@createPoolSuccess')->name('createPoolSuccess');
 Route::get('/deletePoolSuccess', 'PoolController@deletePoolSuccess')->name('deletePoolSuccess');
+
+// Inicio tras login
+Route::get('/home', function () {
+    return view('auth.dashboard');
+})->middleware(['auth', 'verified']);
+
+// Rutas que acceden solo desde login
+Route::prefix('')->middleware('auth', 'verified')->group(function () {
+
+});
+
+Route::post('/tokens/create', [TokenController::class, 'createToken'])->name('createToken');
