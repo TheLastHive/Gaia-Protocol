@@ -18,7 +18,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
     ];
@@ -42,4 +42,21 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function pools(){
+        return $this->hasMany(Pool::class,  "user_id");
+    }
+    public function tokens(){
+        return $this->hasMany(Token::class,  "user_id");
+    }
+    public function transactions(){
+        return $this->hasMany(Transaction::class,  "user_id");
+    }
+    public function stakings(){
+        return $this->hasMany(Staking::class,  "user_id");
+    }
+    public function liquiditys(){
+        return $this->hasMany(Liquidity::class,  "user_id");
+    }
+
 }

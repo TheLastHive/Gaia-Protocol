@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('liquidity', function (Blueprint $table) {
+        Schema::create('liquiditys', function (Blueprint $table) {
             $table->id();
             $table->decimal('amount', 15, 2);
             $table->foreignId('user_id')->references('id')->on('users');
