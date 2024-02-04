@@ -11,6 +11,7 @@ use App\Models\Token;
 
 class PoolController extends Controller
 {
+        //Añadir Liquidez
     public function addLiquidity(Request $request, $userId, $poolId, $tokenId, $amount)
     {
         $request->validate([
@@ -40,9 +41,10 @@ class PoolController extends Controller
         $pool->total_liquidity += $amount;
         $pool->save();
 
-        return response()->json(['message' => 'Liquidez agregada exitosamente'], 200);
+        return redirect()->route('addLiquiditySuccess')->with('info', 'Liquidez agregada exitosamente');
     }
 
+    //Quitar Liquidez
     public function removeLiquidity(Request $request, $userId, $poolId, $tokenId, $amount)
     {
         $request->validate([
@@ -59,7 +61,7 @@ class PoolController extends Controller
             ->firstOrFail();
 
         if ($liquidity->amount < $amount) {
-            return response()->json(['message' => 'No tienes suficiente liquidez para retirar'], 400);
+            return redirect()->route('removeLiquidityError')->with('error', 'No tienes suficiente liquidez para retirar');
         }
 
         // Restar la cantidad de liquidez del usuario
@@ -77,8 +79,10 @@ class PoolController extends Controller
         $transaction->amount = $amount;
         $transaction->save();
 
-        return response()->json(['message' => 'Liquidez retirada exitosamente'], 200);
+        return redirect()->route('removeLiquiditySuccess')->with('info', 'Liquidez retirada exitosamente');
     }
+
+        //Crear POOL
     public function createPool(Request $request)
     {
         $request->validate([
@@ -92,14 +96,46 @@ class PoolController extends Controller
         $pool->total_liquidity = 0;
         $pool->save();
 
-        return response()->json(['message' => 'Pool creada exitosamente'], 200);
+        return redirect()->route('createPoolSuccess')->with('info', 'Pool creada exitosamente');
     }
 
+    //Borrar POOL
     public function deletePool($poolId)
     {
         $pool = Pool::findOrFail($poolId);
         $pool->delete();
 
-        return response()->json(['message' => 'Pool eliminada exitosamente'], 200);
+        return redirect()->route('deletePoolSuccess')->with('info', 'Pool eliminada exitosamente');
+    }
+
+    //! FUNCIONES PARA MANEJAR VISTAS
+    public function addLiquiditySuccess()
+    {
+        $info = session('info');
+        return view('addLiquiditySuccess', compact('info'));
+    }
+
+    public function removeLiquidityError()
+    {
+        $error = session('error');
+        return view('removeLiquidityError', compact('error'));
+    }
+
+    public function removeLiquiditySuccess()
+    {
+        $info = session('info');
+        return view('removeLiquiditySuccess', compact('info'));
+    }
+
+    public function createPoolSuccess()
+    {
+        $info = session('info');
+        return view('createPoolSuccess', compact('info'));
+    }
+
+    public function deletePoolSuccess()
+    {
+        $info = session('info');
+        return view('deletePoolSuccess', compact('info'));
     }
 }
