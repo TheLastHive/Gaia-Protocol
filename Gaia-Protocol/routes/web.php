@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TokenController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,5 @@ Route::get('/home', function () {
 Route::prefix('')->middleware('auth', 'verified')->group(function () {
 
 });
+
+Route::post('/tokens/create', [TokenController::class, 'createToken'])->name('createToken');
