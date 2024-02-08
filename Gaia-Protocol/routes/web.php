@@ -29,7 +29,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/removeLiquidity', [PoolController::class, 'removeLiquidity'])->name('removeLiquidity');
     Route::post('/createPool', [PoolController::class, 'createPool'])->name('createPool');
     Route::delete('/deletePool/{poolId}', [PoolController::class, 'deletePool'])->name('deletePool');
+    //rutas tokens
+    Route::post('/tokens/create/{userId}', [TokenController::class, 'createToken'])->name('create.token');
+    Route::get('/tokens/creation', [TokenController::class, 'showCreateToken'])->name('showCreate.token');
+    Route::get('/tokens/view', [TokenController::class, 'showMyTokens'])->name('showMy.tokens');
+    Route::get('/tokens/all', [TokenController::class, 'showAllTokens'])->name('showAll.tokens');
+
 });
+
 
 
 // Inicio tras login
