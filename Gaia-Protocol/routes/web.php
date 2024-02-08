@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 // Inicio
 Route::get('/', function () {
-    return view('project_views.swap');
+    return view('welcome');
 });
 
 //rutas para pools
