@@ -8,11 +8,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Diario del Programador') }}</title>
+    <title>{{ config('app.name', 'Gaia Protocol') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.4/dist/tailwind.min.css" rel="stylesheet">
 
     <!-- Styles -->
     @vite(['resources/js/app.js', 'resources/css/app.scss'])
@@ -46,33 +47,34 @@
                             @endif
                         @else
                             {{-- @if (Auth::user()->email_verified_at) --}}
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button"
-                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                        {{ Auth::user()->name }}
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <li><a class="dropdown-item" href="{{ route('logout') }}"
-                                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-                                        </li>
-                                    </ul>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                            {{-- @endif --}}
-                    </div>
-                @endguest
-                </ul>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ Auth::user()->name }}
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                    </li>
+                                </ul>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                                {{-- @endif --}}
+                            </div>
+                        @endguest
+                    </ul>
+                </div>
             </div>
+        </nav>
+
+        <main class="pt-4">
+            @yield('content')
+        </main>
     </div>
-    </nav>
 
-    <main class="pt-4">
-        @yield('content')
-    </main>
-    </div>
-
-
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -1,14 +1,14 @@
 @extends('layouts.template')
 
 @section('general')
-
     {{-- HEADER --}}
-    
+
     {{-- Vista principal --}}
         {{-- @yield('') --}}
         {{-- @yield('') --}}
         {{-- @yield('') --}}
         @yield('create_token')
-    {{-- FOOTER --}}
+        @yield('swap')
 
+    {{-- FOOTER --}}
 @endsection
