@@ -26,6 +26,10 @@ Route::get('/removeLiquiditySuccess', 'PoolController@removeLiquiditySuccess')->
 Route::get('/createPoolSuccess', 'PoolController@createPoolSuccess')->name('createPoolSuccess');
 Route::get('/deletePoolSuccess', 'PoolController@deletePoolSuccess')->name('deletePoolSuccess');
 
+//rutas tokens
+Route::post('/tokens/create/{userId}', [TokenController::class, 'createToken'])->name('createToken');
+Route::get('/tokens/create', [TokenController::class, 'showCreateToken'])->name('showCreateToken');
+
 // Inicio tras login
 Route::get('/home', function () {
     return view('auth.dashboard');
@@ -35,5 +39,3 @@ Route::get('/home', function () {
 Route::prefix('')->middleware('auth', 'verified')->group(function () {
 
 });
-
-Route::post('/tokens/create', [TokenController::class, 'createToken'])->name('createToken');

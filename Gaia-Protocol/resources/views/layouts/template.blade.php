@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Account - Pokémon</title>
+    <title>Gaia Protocol</title>
 
     {{-- Rutas css/js --}}
     @vite([

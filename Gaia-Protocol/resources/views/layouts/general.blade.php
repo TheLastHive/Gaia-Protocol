@@ -8,7 +8,7 @@
         {{-- @yield('') --}}
         {{-- @yield('') --}}
         {{-- @yield('') --}}
-
+        @yield('create_token')
     {{-- FOOTER --}}
 
 @endsection
