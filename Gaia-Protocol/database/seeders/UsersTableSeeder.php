@@ -17,6 +17,7 @@ class UsersTableSeeder extends Seeder
         User::create([
             'username' => 'Juan',
             'email' => 'juan@gmail.com',
+            'email_verified_at' => '2024-01-30 10:34:45',
             'password' => Hash::make('password'), 
         ]);    }
 }
