@@ -5,9 +5,10 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/css/app.scss', //Bootstrap
+                'resources/css/app.scss', 
+                'resources/css/app.css', //Bootstrap
                 'resources/css/custom.scss',
-                'resources/css/custom.css', // Debe estar vacio para que lo compile SASS
+                'resources/css/custom.css',  //CSS Personalizado
                 'resources/js/app.js',
             ],
             refresh: true,

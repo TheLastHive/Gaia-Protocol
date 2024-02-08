@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 // Inicio
 Route::get('/', function () {
-    return view('welcome');
+    return view('project_views.swap');
 });
 
 //rutas para pools
@@ -25,6 +25,7 @@ Route::get('/removeLiquidityError', 'PoolController@removeLiquidityError')->name
 Route::get('/removeLiquiditySuccess', 'PoolController@removeLiquiditySuccess')->name('removeLiquiditySuccess');
 Route::get('/createPoolSuccess', 'PoolController@createPoolSuccess')->name('createPoolSuccess');
 Route::get('/deletePoolSuccess', 'PoolController@deletePoolSuccess')->name('deletePoolSuccess');
+
 
 // Inicio tras login
 Route::get('/home', function () {
