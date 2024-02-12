@@ -34,9 +34,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/tokens/creation', [TokenController::class, 'showCreateToken'])->name('showCreate.token');
     Route::get('/tokens/view', [TokenController::class, 'showMyTokens'])->name('showMy.tokens');
     Route::get('/tokens/all', [TokenController::class, 'showAllTokens'])->name('showAll.tokens');
-
+    Route::get('/tokens/all', [TokenController::class, 'showAllTokens'])->name('showAll.tokens');
 });
-
 
 
 // Inicio tras login
@@ -53,3 +52,7 @@ Route::prefix('')->middleware('auth', 'verified')->group(function () {
 });
 
 Route::post('/tokens/create', [TokenController::class, 'createToken'])->name('createToken');
+
+Route::get('/swap', function () {
+    return view('project_views.swap');
+});
