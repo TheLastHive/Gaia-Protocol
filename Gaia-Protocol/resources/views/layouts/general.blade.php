@@ -7,6 +7,7 @@
         {{-- @yield('') --}}
         {{-- @yield('') --}}
         {{-- @yield('') --}}
+        @yield('showAllTokens')
         @yield('create_token')
         @yield('swap')
 

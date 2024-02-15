@@ -32,6 +32,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //rutas tokens
     Route::post('/tokens/create/{userId}', [TokenController::class, 'createToken'])->name('create.token');
     Route::get('/tokens/creation', [TokenController::class, 'showCreateToken'])->name('showCreate.token');
+    //transacción de crear tokens
+    Route::get('/tokens/createTransaction/{totalSupply}', [TokenController::class, 'createTokenTransaction'])->name('create.tokenTransaction');
     Route::get('/tokens/view', [TokenController::class, 'showMyTokens'])->name('showMy.tokens');
     Route::get('/tokens/all', [TokenController::class, 'showAllTokens'])->name('showAll.tokens');
     Route::get('/tokens/all', [TokenController::class, 'showAllTokens'])->name('showAll.tokens');

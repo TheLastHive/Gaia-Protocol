@@ -13,7 +13,7 @@
         <tbody>
             @foreach ($tokens as $token)
                 <tr>
-                  <td>{{ $token->owner_user_id }}</td>
+                  <td>{{ $token->user_id }}</td>
                   <td>{{ $token->name }}</td>
                     <td>{{ $token->symbol }}</td>
                     <td>{{ $token->total_supply }}</td>

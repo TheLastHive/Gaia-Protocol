@@ -19,6 +19,17 @@ return new class extends Migration
                 'swap',
                 'add liquidity',
                 'withdraw liquidity',
+           ]);
+            $table->enum('status', [
+                'completed',
+                'failed',
+           ]);
+            $table->decimal('amount', 15, 2);
+                'token creation',
+                'pool creation',
+                'swap',
+                'add liquidity',
+                'withdraw liquidity',
             ]);
             $table->enum('status', ['pending', 'completed', 'failed'])->default('pending');
             $table->decimal('amount', 15, 2)->default('0.00');
