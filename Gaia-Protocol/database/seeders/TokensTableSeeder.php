@@ -26,14 +26,14 @@ class TokensTableSeeder extends Seeder
         Token::create([
             'name' => 'TPD',
             'symbol' => 'TPD',
-            'total_supply' =>  1000000.00,
-            'owner_user_id' => $user->id,
+            'total_supply' =>  1000000,
+            'user_id' => $user->id,
         ]);
         Token::create([
             'name' => 'KENTUCKY',
             'symbol' => 'KFC',
-            'total_supply' =>  1000000.00,
-            'owner_user_id' => $user->id,
+            'total_supply' =>  1000000,
+            'user_id' => $user->id,
         ]);
     }
 }
