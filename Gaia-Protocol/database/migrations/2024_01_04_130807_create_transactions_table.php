@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->enum('type', [
-                'a',
-                'b',
-                'c',
+                'token creation',
+                'pool creation',
+                'swap',
+                'add liquidity',
+                'withdraw liquidity',
             ]);
             $table->string('status');
             $table->decimal('amount', 15, 2);
