@@ -18,7 +18,7 @@ class TransactionsTableSeeder extends Seeder
         $user = User::first(); // Get the first user to associate with the transaction
 
         Transaction::create([
-            'type' => 'a', 
+            'type' => 'swap', 
             'status' => 'completed', 
             'amount' =>  500.00,
             'user_id' => $user->id,

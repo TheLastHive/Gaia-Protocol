@@ -21,7 +21,7 @@ class TokensTableSeeder extends Seeder
             'name' => 'Pedrito',
             'symbol' => 'PDT',
             'total_supply' =>  1000000.00,
-            'owner_user_id' => $user->id,
+            'user_id' => $user->id,
         ]);
     }
 }
