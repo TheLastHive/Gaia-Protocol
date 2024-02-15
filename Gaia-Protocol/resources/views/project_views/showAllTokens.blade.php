@@ -1,5 +1,5 @@
 @extends('layouts.template')
-@section('general')
+@section('showAllTokens')
     <h1>Todos los Tokens</h1>
     <table class="table">
         <thead>

@@ -1,6 +1,6 @@
 {{-- !!! falta el extend para que se vea perfe --}}
 @extends('layouts.template')
-@section('general')
+@section('create_token')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
