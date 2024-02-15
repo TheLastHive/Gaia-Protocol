@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\PoolController;
 use App\Http\Controllers\TokenController;
+use App\Http\Controllers\TransactionController;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 
 
@@ -36,6 +38,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/tokens/createTransaction/{totalSupply}', [TokenController::class, 'createTokenTransaction'])->name('create.tokenTransaction');
     Route::get('/tokens/view', [TokenController::class, 'showMyTokens'])->name('showMy.tokens');
     Route::get('/tokens/all', [TokenController::class, 'showAllTokens'])->name('showAll.tokens');
+    // tabla de todas las transacciones
+    Route::get('/transactions/all', [TransactionController::class, 'showAllTransactions'])->name('showAll.transactions');
 });
 
 
