@@ -21,8 +21,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UsersTableSeeder::class,
-            PoolsTableSeeder::class,
             TokensTableSeeder::class,
+            PoolsTableSeeder::class,
             TransactionsTableSeeder::class,
             StakingsTableSeeder::class,
             LiquiditysTableSeeder::class,

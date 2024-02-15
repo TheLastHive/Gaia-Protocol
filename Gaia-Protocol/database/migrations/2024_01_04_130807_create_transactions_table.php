@@ -20,8 +20,8 @@ return new class extends Migration
                 'add liquidity',
                 'withdraw liquidity',
             ]);
-            $table->string('status');
-            $table->decimal('amount', 15, 2);
+            $table->enum('status', ['pending', 'completed', 'failed'])->default('pending');
+            $table->decimal('amount', 15, 2)->default('0.00');
             $table->foreignId('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('pool_id')->nullable(); // Añade una columna para el ID de la pool
             $table->foreign('pool_id')->references('id')->on('pools')->onDelete('cascade');

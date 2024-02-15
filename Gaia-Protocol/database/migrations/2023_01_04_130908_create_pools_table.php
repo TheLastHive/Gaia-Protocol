@@ -15,9 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->decimal('total_liquidity', 15, 2);
-            $table->foreignId('user_id')->references('id')->on('users');
+            $table->decimal('total_liquidity',  15,  2);
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('token1_id');
+            $table->unsignedBigInteger('token2_id');
             $table->timestamps();
+
+            // Añade las restricciones de clave externa
+            $table->foreign('token1_id')->references('id')->on('tokens')->onDelete('cascade');
+            $table->foreign('token2_id')->references('id')->on('tokens')->onDelete('cascade');
         });
     }
 

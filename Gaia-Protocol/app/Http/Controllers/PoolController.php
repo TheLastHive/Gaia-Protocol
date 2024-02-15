@@ -118,9 +118,11 @@ class PoolController extends Controller
 
             // Crear una nueva transacción de tipo "pool creation"
             $transaction = new Transaction();
-            $transaction->type = 'PoolCreation';
+            $transaction->type = 'Pool Creation';
             $transaction->user_id = $user->id;
             $transaction->pool_id = $pool->id;
+            $transaction->status = 'completed';
+            $transaction->amount = '0';
             $transaction->save();
 
             DB::commit();
