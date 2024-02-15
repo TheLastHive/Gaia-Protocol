@@ -20,7 +20,10 @@ return new class extends Migration
                 'add liquidity',
                 'withdraw liquidity',
            ]);
-            $table->string('status');
+            $table->enum('status', [
+                'completed',
+                'failed',
+           ]);
             $table->decimal('amount', 15, 2);
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();

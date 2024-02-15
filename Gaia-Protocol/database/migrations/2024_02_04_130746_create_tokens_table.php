@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('symbol');
-            $table->decimal('total_supply', 15, 2);
+            $table->string('url',  2048)->nullable();
+            $table->integer('total_supply');
             $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });

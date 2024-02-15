@@ -20,7 +20,7 @@ class TokensTableSeeder extends Seeder
         Token::create([
             'name' => 'Pedrito',
             'symbol' => 'PDT',
-            'total_supply' =>  1000000.00,
+            'total_supply' =>  1000000,
             'user_id' => $user->id,
         ]);
     }
