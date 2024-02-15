@@ -8,20 +8,26 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Account - Pokémon</title>
+    <title>Gaia Protocol</title>
 
     {{-- Rutas css/js --}}
     @vite([
-        'resources/css/app.scss', // Bootstrap
-        'resources/css/custom.scss', // CSS principal
-        'resources/css/custom.css',
-        'resources/js/app.js', // JS PRINCIPAL
+        'resources/css/app.scss',
+        'resources/css/app.css', //Bootstrap
+        'resources/css/custom.scss',
+        'resources/css/custom.css', //CSS Personalizado
+        'resources/js/app.js',
     ])
 
     {{-- Iconos FONTAWESOME --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{-- cdn tailwind --}}
+    <script defer src="https://cdn.tailwindcss.com"></script>
+    {{-- script crear token modal --}}
+    <script defer src="{{ asset('js/createTokenModal.js') }}"></script>
+
 </head>
 
 <body>

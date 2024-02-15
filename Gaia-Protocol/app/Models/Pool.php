@@ -18,4 +18,14 @@ class Pool extends Model
     {
         return $this->hasMany(Liquidity::class,  "user_id");
     }
+
+    public function token1()
+    {
+        return $this->belongsTo(Token::class, 'token1_id');
+    }
+
+    public function token2()
+    {
+        return $this->belongsTo(Token::class, 'token2_id');
+    }
 }
