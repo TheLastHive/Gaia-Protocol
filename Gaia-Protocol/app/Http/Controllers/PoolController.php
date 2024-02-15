@@ -92,10 +92,16 @@ class PoolController extends Controller
         $request->validate([
             'name' => 'required|string|max:100',
             'description' => 'required|string|max:255',
+            'token1' => 'required|exists:tokens,id', // Asegúrate de que el token1 exista en la tabla de tokens
+            'token2' => 'required|exists:tokens,id', // Asegúrate de que el token2 exista en la tabla de tokens
         ]);
 
         // Obtener el usuario autenticado
         $user = auth()->user();
+
+        // Buscar los tokens por ID
+        $token1 = Token::findOrFail($request->token1);
+        $token2 = Token::findOrFail($request->token2);
 
         DB::beginTransaction();
 
@@ -106,22 +112,28 @@ class PoolController extends Controller
             $pool->description = $request->description;
             $pool->total_liquidity =   0;
             $pool->user_id = $user->id;
+            $pool->token1_id = $token1->id; // Guarda el ID del token1
+            $pool->token2_id = $token2->id; // Guarda el ID del token2
             $pool->save();
+
+            // Crear una nueva transacción de tipo "pool creation"
+            $transaction = new Transaction();
+            $transaction->type = 'PoolCreation';
+            $transaction->user_id = $user->id;
+            $transaction->pool_id = $pool->id;
+            $transaction->save();
 
             DB::commit();
 
             return redirect()->route('createPoolSuccess')->with('info', 'Pool creada exitosamente');
         } catch (Exception $e) {
             DB::rollBack();
-
             // Capturar y registrar el error
             Log::error('Error creating pool: ' . $e->getMessage());
-
             // Redirigir con un mensaje de error
             return redirect()->back()->withErrors(['message' => 'Hubo un error al crear el pool.']);
         }
     }
-
 
     //Borrar POOL
     public function deletePool($poolId)
@@ -149,8 +161,8 @@ class PoolController extends Controller
     public function showMyPools()
     {
         $user = auth()->user();
-        $myPools = $user->pools;
-        $allPools = Pool::all();
+        $myPools = $user->pools->with('token1', 'token2')->get();
+        $allPools = Pool::with('token1', 'token2')->get();
         return view('auth.dashboard', compact('myPools', 'allPools'));
     }
 
@@ -165,7 +177,9 @@ class PoolController extends Controller
         $user = auth()->user();
         $myPools = $user->pools;
         $allPools = Pool::all();
-        return view('auth.dashboard', compact('myPools', 'allPools'));
+        $tokens = Token::all();
+
+        return view('auth.dashboard', compact('myPools', 'allPools', 'tokens'));
     }
 
 

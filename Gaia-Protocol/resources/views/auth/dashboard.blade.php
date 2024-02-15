@@ -39,14 +39,23 @@
                         <div class="py-4 grid grid-cols-4 gap-4">
                             <div>{{ $pool->name }}</div>
                             <div class="text-center">{{ $pool->description }}</div>
-                            <div class="text-center">{{ $pool->total_liquidity }}</div>
-                            <div class="text-right">
-                                <form action="{{ route('deletePool', $pool->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit"
-                                        class="bg-red-700 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Eliminar</button>
-                                </form>
+                            <div class="text-center">
+                                @if ($pool->token1)
+                                    <img src="{{ asset('https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/ethereum-eth-icon.png') }}"
+                                        alt="Token  1 Placeholder" class="h-6 w-6">
+                                @else
+                                    <span class="text-gray-500">Token 1 no asignado</span>
+                                @endif
+
+                            </div>
+                            <div class="text-center">
+                                @if ($pool->token2)
+                                    <img src="{{ asset('https://upload.wikimedia.org/wikipedia/en/b/b9/Solana_logo.png') }}"
+                                        alt="Token  2 Placeholder" class="h-6 w-6">
+                                    {{ $pool->token2->name }}
+                                @else
+                                    <span class="text-gray-500">Token 2 no asignado</span>
+                                @endif
                             </div>
                         </div>
                     @endforeach
@@ -82,25 +91,97 @@
         <div class="modal-dialog">
             <div class="modal-content" style="background-color: #0d7936; color: white;">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="createPoolModalLabel">Crear Pool</h5>
+                    <h5 class="modal-title" id="createPoolModalLabel">Create Pool</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form action="{{ route('createPool') }}" method="post">
-                        @csrf
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Nombre del Pool</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="description" class="form-label">Descripción</label>
-                            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
-                        </div>
-                        <button type="submit"
-                            class="btn bg-green-700 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Crear
-                            Pool</button>
-                    </form>
-                </div>
+                <form action="{{ route('createPool') }}" method="POST">
+                    @csrf <div class="modal-body">
+                        <div id="createPoolView">
+                            <div class="mb-8">
+
+                                <!-- Pool Name and Description -->
+                                <div class="mb-4">
+                                    <label for="name" class="block text-sm font-medium text-gray-200">Nombre de la
+                                        Pool</label>
+                                    <input type="text" id="name" name="name"
+                                        class="mt-1 block w-full pl-3 pr-10 py-2 text-black border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="description"
+                                        class="block text-sm font-medium text-gray-200">Descripción</label>
+                                    <textarea id="description" name="description"
+                                        class="mt-1 block w-full pl-3 pr-10 py-2 text-black border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md"></textarea>
+                                </div>
+
+                                <!-- Token Selection -->
+                                <div class="container mx-auto mt-5">
+                                    <div class="bg-green-900 p-4 rounded-lg shadow-lg text-white mb-8">
+                                        <!-- Token Selection Area -->
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                                            <!-- Token 1 Selection -->
+                                            <div class="relative">
+                                                <div class="flex justify-between items-center bg-green-700 p-3 rounded-lg">
+                                                    <div class="flex items-center">
+                                                        <span class="rounded-full p-2 bg-green-800 mr-3">
+                                                            <!-- Token Icon Placeholder -->
+                                                            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/ethereum-eth-icon.png"
+                                                                alt="Token Icon" class="h-6 w-6">
+                                                        </span>
+                                                        <select id="token1Dropdown" name="token1"
+                                                            class="bg-transparent text-black focus:outline-none appearance-none">
+                                                            @foreach ($tokens as $token)
+                                                                <option value="{{ $token->id }}">{{ $token->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div
+                                                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                                            viewBox="0 0 20 20">
+                                                            <path
+                                                                d="M5.516 7.548c.436 0 .84.28.993.683l1.55 4.714c.153.403.544.683.994.683h5.896c.668 0 1.207-.539 1.207-1.207 0-.668-.539-1.207-1.207-1.207H10.6l1.55-4.714a1.217 1.217 0 00-.993-1.683H5.516c-.668.047-1.207.586-1.207 1.254 0 .668.539 1.207 1.207 1.207z" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Token 2 Selection -->
+                                            <div class="relative">
+                                                <div class="flex justify-between items-center bg-green-700 p-3 rounded-lg">
+                                                    <div class="flex items-center">
+                                                        <span class="rounded-full p-2 bg-green-800 mr-3">
+                                                            <!-- Token Icon Placeholder -->
+                                                            <img src="https://upload.wikimedia.org/wikipedia/en/b/b9/Solana_logo.png"
+                                                                alt="Token Icon" class="h-6 w-6">
+                                                        </span>
+                                                        <select id="token2Dropdown" name="token2"
+                                                            class="bg-transparent text-black focus:outline-none appearance-none">
+                                                            @foreach ($tokens as $token)
+                                                                <option value="{{ $token->id }}">{{ $token->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div
+                                                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                                        <svg class="fill-current h-4 w-4"
+                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                            <path
+                                                                d="M5.516 7.548c.436 0 .84.28.993.683l1.55 4.714c.153.403.544.683.994.683h5.896c.668 0 1.207-.539 1.207-1.207 0-.668-.539-1.207-1.207-1.207H10.6l1.55-4.714a1.217 1.217 0 00-.993-1.683H5.516c-.668.047-1.207.586-1.207 1.254 0 .668.539 1.207 1.207 1.207z" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </ <!-- Creation Button -->
+                                        <div class="text-center mt-8">
+                                            <button id="createPoolButton"
+                                                class="bg-green-700 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+                                                Create Pool
+                                            </button>
+                                        </div>
+                </form>
             </div>
         </div>
     </div>
@@ -289,14 +370,39 @@
 @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var deletePoolButtons = document.querySelectorAll('.delete-pool-button');
+            let deletePoolButtons = document.querySelectorAll('.delete-pool-button');
+            // Selecciona los elementos por su ID
+            const createTokenButton = document.getElementById('createTokenButton');
+
             deletePoolButtons.forEach(function(button) {
                 button.addEventListener('click', function() {
-                    var poolId = this.dataset.poolId;
-                    var formAction = '/deletePool/' + poolId;
+                    let poolId = this.dataset.poolId;
+                    let formAction = '/deletePool/' + poolId;
                     document.getElementById('deletePoolForm').action = formAction;
                 });
             });
         });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+                    // Función para cargar los tokens y llenar las opciones del dropdown
+                    function loadTokens(dropdownId) {
+                        $.getJSON('/tokens', function(tokens) {
+                                const dropdown = $(`#${dropdownId}`);
+                                dropdown.empty(); // Limpia las opciones existentes
+                                $.each(tokens, function(i, token) {
+                                        dropdown.append($(`<option value="${token.id}">${token.name}</option>`);
+                                        });
+                                }).fail(function(jqXHR, textStatus, errorThrown) {
+                                console.error('Error loading tokens:', textStatus, errorThrown);
+                            });
+                        }
+
+                        // Llama a la función para cargar los tokens y llenar las opciones del primer dropdown
+                        loadTokens('token1Dropdown');
+                        // Llama a la función para cargar los tokens y llenar las opciones del segundo dropdown
+                        loadTokens('token2Dropdown');
+                    });
     </script>
 @endpush

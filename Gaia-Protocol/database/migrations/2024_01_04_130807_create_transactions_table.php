@@ -17,10 +17,12 @@ return new class extends Migration
                 'a',
                 'b',
                 'c',
-           ]);
+            ]);
             $table->string('status');
             $table->decimal('amount', 15, 2);
             $table->foreignId('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('pool_id')->nullable(); // Añade una columna para el ID de la pool
+            $table->foreign('pool_id')->references('id')->on('pools')->onDelete('cascade');
             $table->timestamps();
         });
     }

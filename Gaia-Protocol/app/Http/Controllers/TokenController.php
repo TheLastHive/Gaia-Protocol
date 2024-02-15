@@ -68,4 +68,10 @@ class TokenController extends Controller
         // Pasa los tokens a la vista
         return view('project_views.showAllTokens', compact('tokens'));
     }
+
+    public function getTokens()
+    {
+        $tokens = Token::all();
+        return response()->json($tokens);
+    }
 }

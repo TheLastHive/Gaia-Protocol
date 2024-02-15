@@ -35,6 +35,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/tokens/view', [TokenController::class, 'showMyTokens'])->name('showMy.tokens');
     Route::get('/tokens/all', [TokenController::class, 'showAllTokens'])->name('showAll.tokens');
     Route::get('/tokens/all', [TokenController::class, 'showAllTokens'])->name('showAll.tokens');
+    Route::get('/tokens', [TokenController::class, 'getTokens'])->name('tokens.get'); 
 });
 
 
@@ -43,8 +44,7 @@ Route::get('/home', function () {
     return view('auth.dashboard');
 })->middleware(['auth', 'verified']);
 
-//! si se quiere añadir mas variables como tokens a la vista home se crea un metodo en el controlador home que extienda
-//! todos los metodos con las variables necesarias
+
 Route::get('/home', [PoolController::class, 'showHomePools'])->middleware(['auth', 'verified']);
 
 // Rutas que acceden solo desde login
