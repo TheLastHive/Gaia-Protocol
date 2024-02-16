@@ -3,6 +3,19 @@ body {
     align-items: center;
 }
 
+/* MAIN */
+main {
+    display: flex;
+    flex-grow: 1;
+    height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    height: 50vh;
+}
+
+
 .cont-main {
     background: linear-gradient(to bottom, #379584, #6dd4c2);
     width: calc(1440px / 1.5);
@@ -47,7 +60,7 @@ body {
     padding-bottom: 68px;
 }
 
-.cont-wallet{
+.cont-wallet {
     font-size: 20px;
     color: #EDFAF7;
 
@@ -57,7 +70,7 @@ body {
     width: 80px;
     height: 80px;
     background: #e5e284;
-    position:absolute;
-    top:46%;
+    position: absolute;
+    top: 46%;
     left: 48%;
 }

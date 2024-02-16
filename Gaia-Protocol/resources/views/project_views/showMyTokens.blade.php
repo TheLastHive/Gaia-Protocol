@@ -1,7 +1,7 @@
 @extends('layouts.general')
 
 @section('showMyTokens')
-    <div class="container mx-auto mt-5">
+    <div class="container-fluid mx-auto mt-5">
         <div class="flex justify-center overflow-x-auto">
             <div class="max-w-screen-sm"> <!-- Añadido para limitar el ancho máximo de la tabla -->
                 <h1 class="text-xl font-bold mb-4">Tus Tokens</h1>
