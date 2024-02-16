@@ -36,9 +36,16 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-warning shadow-sm d-flex justify-content-end pe-3">
-            <div class="d-flex">
-
+        <nav class="navbar navbar-expand-md navbar-light bg-warning shadow-sm d-flex justify-content-between pe-3">
+            <div class="">
+                <div class="sidebar2 d-flex">
+                    <a><button class="btn rounded-5 btn-secondary">A</button></a>
+                    <a><button class="btn rounded-5 btn-secondary ">A</button></a>
+                    <a><button class="btn rounded-5 btn-secondary">A</button></a>
+                    <a><button class="btn rounded-5 btn-secondary">A</button></a>
+                    <a><button class="btn rounded-5 btn-secondary">A</button></a>
+                    <a><button class="btn rounded-5 btn-secondary">A</button></a>
+                </div>
 
                 <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
                     <!-- Right Side Of Navbar -->
@@ -77,7 +84,7 @@
             </div>
         </nav>
 
-        <main class="pt-4 d-flex">
+        <main class="pt-4 ms-2 me-2 d-grid d-sm-flex">
             @yield('general')
         </main>
     </div>
