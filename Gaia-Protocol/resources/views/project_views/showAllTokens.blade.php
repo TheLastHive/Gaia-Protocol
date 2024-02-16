@@ -1,5 +1,6 @@
-@extends('layouts.template')
-@section('general')
+@extends('layouts.general')
+
+@section('showAllTokens')
     <div class="overflow-x-auto">
         <h1 class="text-xl font-bold mb-4">Todos los Tokens</h1>
         <table class="min-w-full divide-y divide-gray-200">

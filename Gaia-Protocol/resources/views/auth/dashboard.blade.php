@@ -1,6 +1,19 @@
 @extends('auth.template')
 
 @section('content')
+
+    {{-- SIDEBAR --}}
+    <div class="container col-1 bg-warning rounded-5 ms-2 d-grid justify-content-center align-items-center">
+        <div></div>
+        <a><button class="btn rounded-5 btn-secondary mt-5">A</button></a>
+        <a><button class="btn rounded-5 btn-secondary ">A</button></a>
+        <a><button class="btn rounded-5 btn-secondary">A</button></a>
+        <a><button class="btn rounded-5 btn-secondary">A</button></a>
+        <a><button class="btn rounded-5 btn-secondary mb-5">A</button></a>
+   <div></div>
+    </div>
+
+    {{-- CONTENIDO PRINCIPAL --}}
     <div class="container mx-auto mt-5">
         <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Gestión de Pools</h2>
 
