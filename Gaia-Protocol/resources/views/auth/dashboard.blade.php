@@ -1,6 +1,19 @@
 @extends('auth.template')
 
 @section('content')
+
+    {{-- SIDEBAR --}}
+    <div class="container col-1 bg-warning rounded-5 ms-2 d-grid justify-content-center align-items-center">
+        <div></div>
+        <a><button class="btn rounded-5 btn-secondary mt-5">A</button></a>
+        <a><button class="btn rounded-5 btn-secondary ">A</button></a>
+        <a><button class="btn rounded-5 btn-secondary">A</button></a>
+        <a><button class="btn rounded-5 btn-secondary">A</button></a>
+        <a><button class="btn rounded-5 btn-secondary mb-5">A</button></a>
+   <div></div>
+    </div>
+
+    {{-- CONTENIDO PRINCIPAL --}}
     <div class="container mx-auto mt-5">
         <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Gestión de Pools</h2>
 
@@ -104,13 +117,15 @@
                                     <label for="name" class="block text-sm font-medium text-gray-200">Nombre de la
                                         Pool</label>
                                     <input type="text" id="name" name="name"
-                                        class="mt-1 block w-full pl-3 pr-10 py-2 text-black border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md" required>
+                                        class="mt-1 block w-full pl-3 pr-10 py-2 text-black border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md"
+                                        required>
                                 </div>
                                 <div class="mb-4">
                                     <label for="description"
                                         class="block text-sm font-medium text-gray-200">Descripción</label>
                                     <textarea id="description" name="description"
-                                        class="mt-1 block w-full pl-3 pr-10 py-2 text-black border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md" required></textarea>
+                                        class="mt-1 block w-full pl-3 pr-10 py-2 text-black border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md"
+                                        required></textarea>
                                 </div>
 
                                 <!-- Token Selection -->

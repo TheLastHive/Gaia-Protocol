@@ -1,6 +1,6 @@
-@extends('layouts.template')
+@extends('layouts.general')
 
-@section('general')
+@section('showTransactions')
     <div class="overflow-x-auto">
         <h1 class="text-xl font-bold mb-4">Todas las Transacciones</h1>
         <table class="min-w-full divide-y divide-gray-200">

@@ -16,23 +16,25 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.4/dist/tailwind.min.css" rel="stylesheet">
 
     <!-- Styles -->
-    @vite(['resources/js/app.js', 'resources/css/app.scss'])
+    @vite(['resources/js/app.js', 
+    'resources/css/app.scss',
+    'resources/css/app.css',
+    'resources/css/custom.scss',
+    'resources/css/custom.css',
+    ])
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-warning shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Fortify') }}
-                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav">
                         <!-- Authentication Links -->
@@ -68,7 +70,7 @@
             </div>
         </nav>
 
-        <main class="pt-4">
+        <main class="pt-4 d-flex">
             @yield('content')
         </main>
     </div>

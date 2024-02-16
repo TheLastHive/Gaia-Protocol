@@ -1,5 +1,7 @@
 @extends('layouts.general')
-<div class="container cont-god ">
+
+@section('swap')
+<div class="container cont-god col-11">
     <div class="container cont-main rounded-5">
 
         <div class="row d-flex">
@@ -46,3 +48,4 @@
     </div>
 
 </div>
+@endsection
