@@ -35,23 +35,29 @@
             <!-- List of My Pools -->
             <div class="mt-8">
                 <div class="divide-y divide-gray-700">
+                    <div class="py-4 grid grid-cols-4 gap-4 items-center">
+                        <div class="font-bold">Nombre del Pool</div>
+                        <div class="font-bold text-center">Descripción</div>
+                        <div class="font-bold text-center">Token 1</div>
+                        <div class="font-bold text-center">Token 2</div>
+                    </div>
                     @foreach ($myPools as $pool)
-                        <div class="py-4 grid grid-cols-4 gap-4">
+                        <div class="py-4 grid grid-cols-4 gap-4 items-center">
                             <div>{{ $pool->name }}</div>
                             <div class="text-center">{{ $pool->description }}</div>
-                            <div class="text-center">
+                            <div class="text-center flex items-center justify-center">
                                 @if ($pool->token1)
                                     <img src="{{ asset('https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/ethereum-eth-icon.png') }}"
-                                        alt="Token  1 Placeholder" class="h-6 w-6">
+                                        alt="Token   1 Placeholder" class="h-6 w-6">
+                                    {{ $pool->token1->name }}
                                 @else
                                     <span class="text-gray-500">Token 1 no asignado</span>
                                 @endif
-
                             </div>
-                            <div class="text-center">
+                            <div class="text-center flex items-center justify-center">
                                 @if ($pool->token2)
                                     <img src="{{ asset('https://upload.wikimedia.org/wikipedia/en/b/b9/Solana_logo.png') }}"
-                                        alt="Token  2 Placeholder" class="h-6 w-6">
+                                        alt="Token   2 Placeholder" class="h-6 w-6">
                                     {{ $pool->token2->name }}
                                 @else
                                     <span class="text-gray-500">Token 2 no asignado</span>
@@ -104,13 +110,15 @@
                                     <label for="name" class="block text-sm font-medium text-gray-200">Nombre de la
                                         Pool</label>
                                     <input type="text" id="name" name="name"
-                                        class="mt-1 block w-full pl-3 pr-10 py-2 text-black border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md" required>
+                                        class="mt-1 block w-full pl-3 pr-10 py-2 text-black border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md"
+                                        required>
                                 </div>
                                 <div class="mb-4">
                                     <label for="description"
                                         class="block text-sm font-medium text-gray-200">Descripción</label>
                                     <textarea id="description" name="description"
-                                        class="mt-1 block w-full pl-3 pr-10 py-2 text-black border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md" required></textarea>
+                                        class="mt-1 block w-full pl-3 pr-10 py-2 text-black border-gray-300 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm rounded-md"
+                                        required></textarea>
                                 </div>
 
                                 <!-- Token Selection -->
@@ -376,22 +384,6 @@
 @endpush
 
 @push('scripts')
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            let deletePoolButtons = document.querySelectorAll('.delete-pool-button');
-            // Selecciona los elementos por su ID
-            const createTokenButton = document.getElementById('createTokenButton');
-
-            deletePoolButtons.forEach(function(button) {
-                button.addEventListener('click', function() {
-                    let poolId = this.dataset.poolId;
-                    let formAction = '/deletePool/' + poolId;
-                    document.getElementById('deletePoolForm').action = formAction;
-                });
-            });
-        });
-    </script>
-
     <script>
         $(document).ready(function() {
                     // Función para cargar los tokens y llenar las opciones del dropdown
