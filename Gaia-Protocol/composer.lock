@@ -403,9 +403,11 @@
         {
             "name": "doctrine/lexer",
             "version": "3.0.1",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/lexer.git",
+                "reference": "31ad66abc0fc9e1a1f2d9bc6a42668d2fbbcd6dd"
                 "reference": "31ad66abc0fc9e1a1f2d9bc6a42668d2fbbcd6dd"
             },
             "dist": {
@@ -421,7 +423,11 @@
                 "doctrine/coding-standard": "^12",
                 "phpstan/phpstan": "^1.10",
                 "phpunit/phpunit": "^10.5",
+                "doctrine/coding-standard": "^12",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^10.5",
                 "psalm/plugin-phpunit": "^0.18.3",
+                "vimeo/psalm": "^5.21"
                 "vimeo/psalm": "^5.21"
             },
             "type": "library",
@@ -460,6 +466,7 @@
             "support": {
                 "issues": "https://github.com/doctrine/lexer/issues",
                 "source": "https://github.com/doctrine/lexer/tree/3.0.1"
+                "source": "https://github.com/doctrine/lexer/tree/3.0.1"
             },
             "funding": [
                 {
@@ -475,6 +482,7 @@
                     "type": "tidelift"
                 }
             ],
+            "time": "2024-02-05T11:56:58+00:00"
             "time": "2024-02-05T11:56:58+00:00"
         },
         {
