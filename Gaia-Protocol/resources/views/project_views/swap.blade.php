@@ -32,7 +32,12 @@
                 <div class="container cont-photo rounded-circle">
                 </div>
                 <div class="container cont-data">
-                    <span class="cont-wallet text-black fw-bold">APOLLO</span>
+                    <label for="token" class="cont-wallet text-black fw-bold">Selecciona un Token:</label>
+                    <select name="token" id="token" class="form-select">
+                        @foreach($tokens as $token)
+                            <option value="{{ $token }}">{{ $token }}</option>
+                        @endforeach
+                    </select>
                     <span class="cont-wallet">0.05$</span>
                 </div>
             </div>

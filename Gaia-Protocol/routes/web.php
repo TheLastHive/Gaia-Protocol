@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\TokenController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SwapController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +27,7 @@ Route::get('/removeLiquidityError', 'PoolController@removeLiquidityError')->name
 Route::get('/removeLiquiditySuccess', 'PoolController@removeLiquiditySuccess')->name('removeLiquiditySuccess');
 Route::get('/createPoolSuccess', 'PoolController@createPoolSuccess')->name('createPoolSuccess');
 Route::get('/deletePoolSuccess', 'PoolController@deletePoolSuccess')->name('deletePoolSuccess');
-
+Route::get('/swap', [SwapController::class, 'showSwapView'])->name('swap');
 
 // Inicio tras login
 Route::get('/home', function () {
