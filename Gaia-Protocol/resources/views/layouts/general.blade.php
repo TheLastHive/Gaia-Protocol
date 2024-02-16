@@ -2,7 +2,7 @@
 
 @section('general')
     {{-- SIDEBAR --}}
-    <div class="container col-1 bg-warning rounded-5 ms-2 d-grid justify-content-center align-items-center">
+    <div class="col-1 bg-warning rounded-5 ms-2 d-grid justify-content-center align-items-center">
         <div></div>
         <a><button class="btn rounded-5 btn-secondary mt-5">A</button></a>
         <a><button class="btn rounded-5 btn-secondary ">A</button></a>
