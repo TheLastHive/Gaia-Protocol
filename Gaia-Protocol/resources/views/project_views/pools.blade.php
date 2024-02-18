@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.general')
 
-@section('content')
+@section('pools')
     <div class="container mt-5">
         <h2>Gestión de Pools</h2>
 

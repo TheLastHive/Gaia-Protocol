@@ -14,13 +14,20 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->enum('type', [
-                'a',
-                'b',
-                'c',
-           ]);
-            $table->string('status');
+                'token creation',
+                'pool creation',
+                'swap',
+                'add liquidity',
+                'withdraw liquidity',
+            ]);
+            $table->enum('status', [
+                'completed',
+                'failed',
+            ]);
             $table->decimal('amount', 15, 2);
             $table->foreignId('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('pool_id')->nullable(); // Añade una columna para el ID de la pool
+            $table->foreign('pool_id')->references('id')->on('pools')->onDelete('cascade');
             $table->timestamps();
         });
     }

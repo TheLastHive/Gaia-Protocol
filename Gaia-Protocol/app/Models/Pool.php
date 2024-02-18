@@ -9,6 +9,10 @@ class Pool extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -17,5 +21,15 @@ class Pool extends Model
     public function liquiditys()
     {
         return $this->hasMany(Liquidity::class,  "user_id");
+    }
+
+    public function token1()
+    {
+        return $this->belongsTo(Token::class, 'token1_id');
+    }
+
+    public function token2()
+    {
+        return $this->belongsTo(Token::class, 'token2_id');
     }
 }
