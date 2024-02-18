@@ -11,7 +11,19 @@
                 </div>
 
                 <div class="container cont-data justify-content-start">
-                    <span class="cont-wallet text-black fw-bold">APOLLO</span>
+                    <form action="{{ route('tokenType') }}" method="post">
+                        @csrf
+                        @if(!empty($tokens))
+                            <select name="token" class="form-select">
+                                @foreach($tokens as $token)
+                                    <option value="{{ $token }}">{{ $token }}</option>
+                                @endforeach
+                            </select>
+                        @else
+                            <p>Error: No hay tokens disponibles.</p>
+                        @endif
+                        <button type="submit" class="btn btn-primary">Cambiar</button>
+                    </form>
                     <span class="cont-wallet">0.05$</span>
                 </div>
 
