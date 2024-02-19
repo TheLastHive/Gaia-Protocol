@@ -10,7 +10,8 @@ class Token extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id'
+        'user_id',
+        'name',
     ];
 
     public function user()
