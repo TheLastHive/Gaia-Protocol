@@ -20,11 +20,11 @@ class PoolController extends Controller
         $request->validate([
             'amount' => 'required|numeric|gt:0',
         ]);
-
+        
         $user = User::findOrFail($userId);
         $token = Token::findOrFail($tokenId);
         $pool = Pool::findOrFail($poolId);
-
+        
         // Agregar la transacción de liquidez
         $transaction = new Transaction();
         $transaction->type = 'AgregarLiquidez';

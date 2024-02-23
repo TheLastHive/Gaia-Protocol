@@ -1,7 +1,6 @@
 @extends('auth.template')
 
 @section('content')
-
     {{-- SIDEBAR --}}
     <div class="container col-1 bg-warning rounded-5 ms-2 d-grid justify-content-center align-items-center">
         <div></div>
@@ -10,7 +9,7 @@
         <a><button class="btn rounded-5 btn-secondary">A</button></a>
         <a><button class="btn rounded-5 btn-secondary">A</button></a>
         <a><button class="btn rounded-5 btn-secondary mb-5">A</button></a>
-   <div></div>
+        <div></div>
     </div>
 
     {{-- CONTENIDO PRINCIPAL --}}
@@ -60,17 +59,17 @@
                             <div class="text-center">{{ $pool->description }}</div>
                             <div class="text-center flex items-center justify-center">
                                 @if ($pool->token1)
-                                    <img src="{{ asset('https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/ethereum-eth-icon.png') }}"
-                                        alt="Token   1 Placeholder" class="h-6 w-6">
+                                    <img src="{{ $pool->token1->url }}"
+                                        alt="Token   1 Placeholder" class="rounded-circle h-6 w-6 mx-1">
                                     {{ $pool->token1->name }}
                                 @else
                                     <span class="text-gray-500">Token 1 no asignado</span>
                                 @endif
                             </div>
-                            <div class="text-center flex items-center justify-center">
+                            <div class="text-center flex items-center justify-center ">
                                 @if ($pool->token2)
-                                    <img src="{{ asset('https://upload.wikimedia.org/wikipedia/en/b/b9/Solana_logo.png') }}"
-                                        alt="Token   2 Placeholder" class="h-6 w-6">
+                                    <img src="{{ $pool->token2->url }}"
+                                        alt="Token   2 Placeholder" class="rounded-circle  h-6 w-6 mx-1">
                                     {{ $pool->token2->name }}
                                 @else
                                     <span class="text-gray-500">Token 2 no asignado</span>
@@ -139,27 +138,29 @@
                                     <div class="bg-green-900 p-4 rounded-lg shadow-lg text-white mb-8">
                                         <!-- Token Selection Area -->
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                                            <!-- Token 1 Selection -->
+                                            <!-- Token 1 Selection modified-->
                                             <div class="relative">
                                                 <div class="flex justify-between items-center bg-green-700 p-3 rounded-lg">
                                                     <div class="flex items-center">
                                                         <span class="rounded-full p-2 bg-green-800 mr-3">
                                                             <!-- Token Icon Placeholder -->
-                                                            <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/ethereum-eth-icon.png"
-                                                                alt="Token Icon" class="h-6 w-6">
+                                                            <img id="tokenIcon" src="" alt="Token Icon"
+                                                                class="rounded-circle h-6 w-6">
                                                         </span>
                                                         <select id="token1Dropdown" name="token1"
                                                             class="bg-transparent text-black focus:outline-none appearance-none">
                                                             @foreach ($tokens as $token)
-                                                                <option value="{{ $token->id }}">{{ $token->name }}
+                                                                <option value="{{ $token->id }}"
+                                                                    data-icon-url="{{ $token->url }}">
+                                                                    {{ $token->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
                                                     <div
                                                         class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                                            viewBox="0 0 20 20">
+                                                        <svg class="fill-current h-4 w-4"
+                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                                             <path
                                                                 d="M5.516 7.548c.436 0 .84.28.993.683l1.55 4.714c.153.403.544.683.994.683h5.896c.668 0 1.207-.539 1.207-1.207 0-.668-.539-1.207-1.207-1.207H10.6l1.55-4.714a1.217 1.217 0 00-.993-1.683H5.516c-.668.047-1.207.586-1.207 1.254 0 .668.539 1.207 1.207 1.207z" />
                                                         </svg>
@@ -173,13 +174,15 @@
                                                     <div class="flex items-center">
                                                         <span class="rounded-full p-2 bg-green-800 mr-3">
                                                             <!-- Token Icon Placeholder -->
-                                                            <img src="https://upload.wikimedia.org/wikipedia/en/b/b9/Solana_logo.png"
-                                                                alt="Token Icon" class="h-6 w-6">
+                                                            <img id="tokenIcon2" src="" alt="Token Icon"
+                                                                class="rounded-circle h-6 w-6">
                                                         </span>
                                                         <select id="token2Dropdown" name="token2"
                                                             class="bg-transparent text-black focus:outline-none appearance-none">
                                                             @foreach ($tokens as $token)
-                                                                <option value="{{ $token->id }}">{{ $token->name }}
+                                                                <option value="{{ $token->id }}"
+                                                                    data-icon-url="{{ $token->url }}">
+                                                                    {{ $token->name }}
                                                                 </option>
                                                             @endforeach
                                                         </select>
