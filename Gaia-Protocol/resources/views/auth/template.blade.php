@@ -14,7 +14,9 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.4/dist/tailwind.min.css" rel="stylesheet">
-
+    {{-- js --}}
+    <script defer src="{{ asset('js/createTokenModal.js') }}"></script>
+    <script defer src="{{ asset('js/changeTokenUrl.js') }}"></script>
     <!-- Styles -->
     @vite(['resources/js/app.js', 'resources/css/app.scss', 'resources/css/app.css', 'resources/css/custom.scss', 'resources/css/custom.css'])
 </head>

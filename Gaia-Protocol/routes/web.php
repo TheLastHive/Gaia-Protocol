@@ -3,6 +3,7 @@
 use App\Http\Controllers\PoolController;
 use App\Http\Controllers\TokenController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\SwapController;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/tokens/all', [TokenController::class, 'showAllTokens'])->name('showAll.tokens');
     // tabla de todas las transacciones
     Route::get('/transactions/all', [TransactionController::class, 'showAllTransactions'])->name('showAll.transactions');
+    
 });
 
 
@@ -56,6 +58,7 @@ Route::prefix('')->middleware('auth', 'verified')->group(function () {
 });
 
 Route::post('/tokens/create', [TokenController::class, 'createToken'])->name('createToken');
+Route::post('/swap/tokenType', [SwapController::class, 'cambiarTipoToken'])->name('tokenType');
 
 Route::get('/swap', function () {
     return view('project_views.swap');
