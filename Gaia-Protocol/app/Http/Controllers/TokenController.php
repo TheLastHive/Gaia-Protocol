@@ -51,6 +51,7 @@ class TokenController extends Controller
             return back()->withErrors(['general' => 'Error al crear el token' . $e->getMessage()]);
         }
     }
+
     public function createTokenTransaction($total_supply)
     {
         try {
@@ -109,4 +110,15 @@ class TokenController extends Controller
         $tokens = Token::all();
         return response()->json($tokens);
     }
+
+    public function showSwapView()
+    {
+        // Obtener todos los tokens para pasarlos a la vista
+        $tokens = Token::pluck('name');
+
+        // dd($tokens);
+
+        return view('project_views.swap', compact('tokens'));
+    }
+
 }

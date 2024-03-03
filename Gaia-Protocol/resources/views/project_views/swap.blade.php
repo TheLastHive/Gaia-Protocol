@@ -1,7 +1,6 @@
 @extends('auth.template')
 
 @section('content')
-
     {{-- SIDEBAR --}}
     <div class="container col-1 bg-warning rounded-5 ms-2 d-grid justify-content-center align-items-center">
         <div></div>
@@ -23,7 +22,7 @@
                 <!-- Token 1 Section -->
                 <div class="bg-green-900 p-4 rounded-lg shadow-lg text-white">
                     <h3 class="text-lg font-bold mb-4">Token 1</h3>
-                    
+
                     <!-- Token 1 Selection Area -->
                     <div class="relative">
                         <div class="flex justify-between items-center bg-green-700 p-3 rounded-lg">
@@ -35,11 +34,19 @@
                                 </span>
                                 <select id="token1Dropdown" name="token1"
                                     class="bg-transparent text-black focus:outline-none appearance-none">
-                                    {{-- Add options dynamically if needed --}}
+                                    {{-- Consultar los nombres de los tokens directamente en el Blade --}}
+                                    @php
+                                        $tokenNames = DB::table('tokens')->pluck('name');
+                                    @endphp
+
+                                    {{-- Iterar sobre la colección de nombres de tokens y agregar opciones --}}
+                                    @foreach ($tokenNames as $name)
+                                        <option value="{{ $name }}">{{ $name }}</option>
+                                    @endforeach
                                 </select>
-                                
+
                             </div>
-                            
+
                             <div
                                 class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -47,7 +54,7 @@
                                         d="M5.516 7.548c.436 0 .84.28.993.683l1.55 4.714c.153.403.544.683.994.683h5.896c.668 0 1.207-.539 1.207-1.207 0-.668-.539-1.207-1.207-1.207H10.6l1.55-4.714a1.217 1.217 0 00-.993-1.683H5.516c-.668.047-1.207.586-1.207 1.254 0 .668.539 1.207 1.207 1.207z" />
                                 </svg>
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="flex justify-between items-center mb-3">
@@ -59,7 +66,7 @@
                 <!-- Token 2 Section -->
                 <div class="bg-green-900 p-4 rounded-lg shadow-lg text-white">
                     <h3 class="text-lg font-bold mb-4">Token 2</h3>
-                    
+
                     <!-- Token 2 Selection Area -->
                     <div class="relative">
                         <div class="flex justify-between items-center bg-green-700 p-3 rounded-lg">
@@ -71,7 +78,10 @@
                                 </span>
                                 <select id="token2Dropdown" name="token2"
                                     class="bg-transparent text-black focus:outline-none appearance-none">
-                                    {{-- Add options dynamically if needed --}}
+                                    {{-- Iterar sobre la colección de nombres de tokens y agregar opciones --}}
+                                    @foreach ($tokenNames as $name)
+                                        <option value="{{ $name }}">{{ $name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div
@@ -88,7 +98,7 @@
                         <span class="text-white">500</span> {{-- Puedes obtener este valor desde tu controlador --}}
                     </div>
                 </div>
-                
+
             </div>
 
             <!-- Swap Button -->
@@ -99,14 +109,12 @@
                 </button>
             </div>
         </div>
-        
+
     </div>
 @endsection
 
 @push('styles')
-    {{-- Include the existing styles or make adjustments as needed --}}
 @endpush
 
 @push('scripts')
-    {{-- Include the existing script or make adjustments as needed --}}
 @endpush
