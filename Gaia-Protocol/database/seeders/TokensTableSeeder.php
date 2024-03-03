@@ -20,18 +20,21 @@ class TokensTableSeeder extends Seeder
         Token::create([
             'name' => 'Pedrito',
             'symbol' => 'PDT',
+            'url' => 'https://www.buscabiografias.com/img/people/San-Pedro-Ap%C3%B3stol.jpg',
             'total_supply' =>  1000000,
             'user_id' => $user->id,
         ]);
         Token::create([
             'name' => 'TPD',
             'symbol' => 'TPD',
+            'url' => 'https://upload.wikimedia.org/wikipedia/en/b/b9/Solana_logo.png',
             'total_supply' =>  1000000,
             'user_id' => $user->id,
         ]);
         Token::create([
             'name' => 'KENTUCKY',
             'symbol' => 'KFC',
+            'url' => 'https://media.licdn.com/dms/image/C4D03AQEoGN9yZGXaXA/profile-displayphoto-shrink_400_400/0/1663705760851?e=2147483647&v=beta&t=m0krYXwfi2k-ialrvr26Jw-qqYG24EJrJbOIohBfmqA',
             'total_supply' =>  1000000,
             'user_id' => $user->id,
         ]);

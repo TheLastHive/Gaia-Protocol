@@ -31,6 +31,8 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.4/dist/tailwind.min.css" rel="stylesheet">
     {{-- script crear token modal --}}
     <script defer src="{{ asset('js/createTokenModal.js') }}"></script>
+    <script defer src="{{ asset('js/changeTokenUrl.js') }}"></script>
+
 
 </head>
 
